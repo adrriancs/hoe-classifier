@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hierarchy of Effect — Klasifikasi Bisnis Lo</title>
+<style>
+html,body{margin:0;padding:0;background:#0a0a0a;min-height:100vh}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.hoe, .hoe *{margin:0;padding:0;box-sizing:border-box}
+.hoe{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#181818;
+  --orange:#FF6B2B;
+  --gold:#F5A623;
+  --text:#F0EDE8;
+  --muted:#888;
+  --border:#2a2a2a;
+  line-height:1.6;
+}
+.hoe button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.hoe button:disabled{opacity:0.35;cursor:not-allowed}
+.hoe select:focus,.hoe input:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:transparent}
+.hoe .hoe-opt:hover{border-color:#3a3a3a;background:var(--bg3)}
+.hoe .hoe-opt.is-selected{border-color:var(--orange);background:var(--bg3)}
+.hoe .hoe-btn-primary:hover{background:#ff7d44}
+.hoe .hoe-btn-secondary:hover{background:var(--bg2);border-color:#3a3a3a}
+.hoe .hoe-btn-ghost:hover{color:var(--text);background:var(--bg2)}
+.hoe optgroup{font-style:normal;font-weight:700;color:var(--gold);background:var(--bg)}
+.hoe .hoe-q[hidden],.hoe .hoe-screen[hidden],.hoe .hoe-result-card[hidden]{display:none!important}
+.hoe .hoe-gradient-text{background:linear-gradient(90deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media print{
+  body *{visibility:hidden}
+  .hoe,.hoe *{visibility:visible}
+  .hoe{background:#fff!important;color:#1f2937!important;border:0!important}
+  .hoe-no-print{display:none!important}
+}
+@media (max-width:560px){
+  .hoe-models-grid{grid-template-columns:1fr!important}
+}
+</style>
+</head>
+<body>
+
+<div class="hoe" style="background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif;max-width:720px;margin:24px auto;padding:28px 24px;border:1px solid var(--border);border-radius:16px" role="region" aria-label="Hierarchy of Effect Quiz">
+
+  <!-- ========== SCREEN: INTRO ========== -->
+  <section class="hoe-screen" data-screen="intro">
+    <h1 style="font-size:28px;font-weight:800;line-height:1.2;margin:0 0 10px;letter-spacing:-0.02em">Bisnis Lo Masuk Kategori Marketing Mana?</h1>
+    <p style="margin:0 0 16px;color:var(--text);font-size:15px">
+      Berdasarkan framework <strong>Hierarchy of Effect (ABC Model)</strong>, ada 3 tipe perjalanan customer sebelum beli. Kategori bisnis lo nentuin marketing yang tepat. Quiz singkat 7 pertanyaan ini bakal bantu lo identifikasi tipenya.
+    </p>
+
+    <div class="hoe-models-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0">
+      <div style="padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);font-size:13px;color:var(--muted);line-height:1.5">
+        <b style="display:block;margin-bottom:6px;font-weight:700;font-size:13px;color:var(--gold)">High Involvement (C-A-B)</b>
+        Riset dulu → suka → beli. Cocok buat skincare, furniture, jasa profesional.
+      </div>
+      <div style="padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);font-size:13px;color:var(--muted);line-height:1.5">
+        <b style="display:block;margin-bottom:6px;font-weight:700;font-size:13px;color:var(--orange)">Low Involvement (C-B-A)</b>
+        Tau dikit → beli (promo) → baru suka. Cocok buat FMCG, makanan harian.
+      </div>
+      <div style="padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);font-size:13px;color:var(--muted);line-height:1.5">
+        <b class="hoe-gradient-text" style="display:block;margin-bottom:6px;font-weight:700;font-size:13px">Experiential (A-B-C)</b>
+        Suka visual → beli → baru mikir worth it. Cocok buat fashion, freelance kreatif.
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+      <button id="hoe-btn-start" class="hoe-btn-primary" style="background:var(--orange);color:#fff;padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:0.01em">Mulai Diagnosa</button>
+      <button id="hoe-btn-resume" class="hoe-btn-secondary" style="background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700" hidden>Lanjut Quiz</button>
+      <button id="hoe-btn-view-result" class="hoe-btn-secondary" style="background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700" hidden>Lihat Hasil Sebelumnya</button>
+    </div>
+
+    <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:18px;font-weight:500">
+      7 pertanyaan • ±2 menit • Hasil tersimpan otomatis di browser lo
+    </div>
+  </section>
+
+  <!-- ========== SCREEN: QUIZ ========== -->
+  <section class="hoe-screen" data-screen="quiz" hidden>
+    <!-- Progress -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+      <div style="flex:1;height:6px;background:var(--bg3);border-radius:999px;overflow:hidden">
+        <div id="hoe-progress-bar" style="height:100%;background:linear-gradient(90deg,var(--orange),var(--gold));width:0%;transition:width 0.25s ease"></div>
+      </div>
+      <span id="hoe-progress-text" style="font-size:13px;color:var(--muted);white-space:nowrap;font-weight:500">Pertanyaan 1/7</span>
+    </div>
+
+    <!-- Q1: Kategori bisnis (Shopee + Services) -->
+    <div class="hoe-q" data-step="0">
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Kategori bisnis lo apa? (pake taxonomy Shopee Indonesia + Services)</div>
+      <select id="hoe-q1" style="width:100%;padding:14px 40px 14px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);font-size:15px;font-weight:500;color:var(--text);font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23888' d='M6 8L0 0h12z'/></svg>&quot;);background-repeat:no-repeat;background-position:right 16px center">
+        <option value="" disabled selected>— Pilih kategori —</option>
+        <optgroup label="Elektronik & Gadget">
+          <option value="0" data-cab="2">Elektronik (TV, AC, Kulkas, dll)</option>
+          <option value="1" data-cab="2">Handphone & Aksesoris</option>
+          <option value="2" data-cab="2">Komputer & Aksesoris</option>
+          <option value="3" data-cab="2">Kamera & Drone</option>
+          <option value="4" data-cba="1" data-abc="1">Audio (earphone, speaker, dll)</option>
+          <option value="5" data-abc="2">Gaming (console, peripheral)</option>
+        </optgroup>
+        <optgroup label="Fashion">
+          <option value="6" data-abc="2">Pakaian Wanita</option>
+          <option value="7" data-abc="2">Pakaian Pria</option>
+          <option value="8" data-abc="2">Sepatu Wanita</option>
+          <option value="9" data-abc="2">Sepatu Pria</option>
+          <option value="10" data-abc="2">Tas Wanita</option>
+          <option value="11" data-abc="2">Tas Pria</option>
+          <option value="12" data-abc="2">Aksesoris Fashion</option>
+          <option value="13" data-abc="2">Jam Tangan</option>
+          <option value="14" data-abc="2">Fashion Muslim</option>
+          <option value="15" data-abc="2">Fashion Bayi & Anak</option>
+        </optgroup>
+        <optgroup label="Kecantikan & Kesehatan">
+          <option value="16" data-cab="2">Kecantikan (Skincare, Makeup, Parfum)</option>
+          <option value="17" data-cab="2">Perawatan & Kesehatan</option>
+          <option value="18" data-cab="2">Ibu & Bayi</option>
+        </optgroup>
+        <optgroup label="Rumah & Lifestyle">
+          <option value="19" data-cba="2">Makanan & Minuman</option>
+          <option value="20" data-cab="2">Perlengkapan Rumah & Furniture</option>
+          <option value="21" data-cab="2">Otomotif</option>
+          <option value="22" data-abc="2">Olahraga & Outdoor</option>
+          <option value="23" data-abc="2">Hobi & Koleksi</option>
+          <option value="24" data-cba="2">Buku & Alat Tulis</option>
+          <option value="25" data-cba="2">Voucher</option>
+          <option value="26" data-cba="2">Souvenir & Pesta</option>
+          <option value="27" data-cab="2">Logam Mulia / Investasi</option>
+        </optgroup>
+        <optgroup label="Services / Jasa">
+          <option value="28" data-cab="2">Services — Profesional (WO, Agency, Klinik, Bimbel, Konsultan, Property, Travel)</option>
+          <option value="29" data-cba="2">Services — Harian/Rutin (Laundry, Cleaning, Salon, Barbershop, Bengkel, Catering)</option>
+          <option value="30" data-abc="2">Services — Kreatif (Photography, Videography, Graphic Design, Florist, Interior)</option>
+        </optgroup>
+        <optgroup label="Lainnya">
+          <option value="31">Lainnya / belum yakin</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Q2: Range harga -->
+    <div class="hoe-q" data-step="1" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Range harga produk/jasa lo biasanya?</div>
+      <div class="hoe-radio-group" data-q="q2" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q2" value="0" data-cba="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Murah (&lt; Rp 100rb)<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Permen, snack, alat tulis, aksesoris kecil</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q2" value="1" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Menengah (Rp 100rb – Rp 1jt)<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Baju, sepatu, gadget kecil, makanan estetik</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q2" value="2" data-cab="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Mahal (&gt; Rp 1jt)<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Furniture, klinik, jasa profesional, elektronik besar</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q3: Visual importance -->
+    <div class="hoe-q" data-step="2" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Seberapa penting visual/estetika produk lo buat keputusan beli orang?</div>
+      <div class="hoe-radio-group" data-q="q3" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q3" value="0" data-abc="2" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Sangat penting<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Foto jelek = nggak laku</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q3" value="1" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Lumayan penting<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Bantu, tapi bukan faktor utama</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q3" value="2" data-cab="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Nggak terlalu<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Yang penting fungsi & spec</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q4: Risk -->
+    <div class="hoe-q" data-step="3" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Risiko buat customer kalo salah beli dari lo?</div>
+      <div class="hoe-radio-group" data-q="q4" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q4" value="0" data-cba="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Rugi kecil / nggak ada<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Ya udah, beli lagi yang lain</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q4" value="1" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Lumayan rugi<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Sayang aja kalo nggak kepake</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q4" value="2" data-cab="2" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Rugi besar / efek serius<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Kesehatan, gagal acara, rusak rumah, dll</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q5: Repeat order -->
+    <div class="hoe-q" data-step="4" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Customer biasanya repeat order seberapa sering?</div>
+      <div class="hoe-radio-group" data-q="q5" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q5" value="0" data-cba="2" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Tiap minggu / harian<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Kopi, makanan harian, sabun, bensin</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q5" value="1" data-cba="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Tiap bulan<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Skincare habis, supplement, langganan</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q5" value="2" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">3 – 12 bulan sekali<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Beli baju baru, sepatu, hobi, koleksi seasonal</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q5" value="3" data-cab="2" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Setahun sekali atau lebih jarang<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">HP/laptop, furniture, klinik, jasa profesional</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q6: Research time -->
+    <div class="hoe-q" data-step="5" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Berapa lama biasanya orang research sebelum beli?</div>
+      <div class="hoe-radio-group" data-q="q6" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q6" value="0" data-cba="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Spontan / impulsif<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Liat, suka, langsung checkout</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q6" value="1" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Beberapa menit – jam<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Liat-liat dulu, bandingin sebentar</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q6" value="2" data-cab="2" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Berhari-hari sampai mingguan<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Riset detail, baca review, tanya teman</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q7: Trigger -->
+    <div class="hoe-q" data-step="6" hidden>
+      <div style="font-size:19px;font-weight:700;margin:0 0 16px;line-height:1.4">Apa yang biasanya bikin orang first-time beli dari lo?</div>
+      <div class="hoe-radio-group" data-q="q7" style="display:grid;gap:10px">
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q7" value="0" data-cba="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Diskon / promo / availability<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Lagi murah / gampang dibeli</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q7" value="1" data-abc="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Visual menarik / suka vibes-nya<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Foto IG bagus, brand-nya keren</span></span>
+        </label>
+        <label class="hoe-opt" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:15px">
+          <input type="radio" name="hoe-q7" value="2" data-cab="1" style="margin-top:3px;accent-color:var(--orange)">
+          <span style="flex:1;font-weight:500">Review, testimoni, sertifikasi<span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400">Banyak yang pake, ada bukti hasil</span></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Quiz actions -->
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button id="hoe-btn-back" class="hoe-btn-secondary" style="background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700">← Sebelumnya</button>
+        <button id="hoe-btn-reset" class="hoe-btn-ghost" style="background:transparent;color:var(--muted);border:0;padding:6px 10px;font-size:13px;font-weight:500;border-radius:6px">Reset jawaban</button>
+      </div>
+      <button id="hoe-btn-next" class="hoe-btn-primary" style="background:var(--orange);color:#fff;padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:0.01em" disabled>Selanjutnya →</button>
+    </div>
+  </section>
+
+  <!-- ========== SCREEN: RESULT ========== -->
+  <section class="hoe-screen" data-screen="result" hidden>
+    <div id="hoe-result-capture">
+
+      <!-- Result variant: CAB / High Involvement -->
+      <div class="hoe-result-card" data-result="cab" hidden>
+        <div style="border-radius:14px;padding:24px 22px;color:#fff;margin:0 0 20px;background:linear-gradient(135deg,#F5A623 0%,#c98613 100%)">
+          <div style="display:inline-block;padding:5px 12px;background:rgba(0,0,0,0.25);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">High Involvement</div>
+          <div style="font-size:26px;font-weight:800;margin:0 0 8px;line-height:1.2;letter-spacing:-0.02em">Bisnis Lo Tipe High Involvement (C → A → B)</div>
+          <div style="font-size:14px;opacity:0.95;font-weight:600">
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Cognitive</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Affective</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Behavior</span>
+          </div>
+        </div>
+        <p style="margin:0 0 14px;color:var(--text)">Customer lo tipe yang mikir dulu sebelum beli. Mereka mau tau dulu spec, review, kredibilitas — baru muncul rasa percaya & suka — baru akhirnya beli. Marketing lo nggak cukup cuma "estetik" doang, harus ada bukti dan edukasi.</p>
+        <h2 style="font-size:20px;font-weight:700;margin:14px 0 14px;letter-spacing:-0.01em">5 Action Marketing Buat Lo</h2>
+        <ol style="margin:0;padding-left:20px">
+          <li style="margin-bottom:10px"><b style="color:var(--gold);font-weight:700">Edukasi konten panjang</b> — long-form blog, video penjelasan, FAQ detail. Customer butuh ngerti dulu.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--gold);font-weight:700">Testimoni & before-after</b> — kumpulin cerita pelanggan dengan hasil konkrit (foto, angka, durasi).</li>
+          <li style="margin-bottom:10px"><b style="color:var(--gold);font-weight:700">Sertifikasi & legalitas</b> — BPOM, lisensi, ISO, certified partner — pajang depan.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--gold);font-weight:700">Case study & track record</b> — tunjukin portofolio klien, jumlah customer, tahun pengalaman.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--gold);font-weight:700">Garansi / refund policy</b> — turunkan risiko persepsi customer biar berani lompat.</li>
+        </ol>
+        <hr style="height:1px;background:var(--border);border:0;margin:20px 0">
+        <h3 style="font-size:12px;font-weight:700;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em">Kategori bisnis lain yang masuk tipe ini</h3>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Skincare/Beauty, Furniture, Klinik Kecantikan, Wedding Organizer, Bimbel, Klinik Hewan, Property, Elektronik besar, Otomotif</p>
+      </div>
+
+      <!-- Result variant: CBA / Low Involvement -->
+      <div class="hoe-result-card" data-result="cba" hidden>
+        <div style="border-radius:14px;padding:24px 22px;color:#fff;margin:0 0 20px;background:linear-gradient(135deg,#FF6B2B 0%,#d44e1a 100%)">
+          <div style="display:inline-block;padding:5px 12px;background:rgba(0,0,0,0.25);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Low Involvement</div>
+          <div style="font-size:26px;font-weight:800;margin:0 0 8px;line-height:1.2;letter-spacing:-0.02em">Bisnis Lo Tipe Low Involvement (C → B → A)</div>
+          <div style="font-size:14px;opacity:0.95;font-weight:600">
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Cognitive (low)</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Behavior</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Affective</span>
+          </div>
+        </div>
+        <p style="margin:0 0 14px;color:var(--text)">Customer lo nggak mikir lama. Kenal dikit aja (denger nama brand, liat di rak, lagi diskon), langsung beli. Suka sama brand-nya muncul belakangan, setelah dipake berkali-kali. Marketing lo soal awareness & top-of-mind — bukan persuasi panjang.</p>
+        <h2 style="font-size:20px;font-weight:700;margin:14px 0 14px;letter-spacing:-0.01em">5 Action Marketing Buat Lo</h2>
+        <ol style="margin:0;padding-left:20px">
+          <li style="margin-bottom:10px"><b style="color:var(--orange);font-weight:700">Awareness luas & repetisi</b> — iklan masif (marketplace, billboard, TikTok ads), bikin nama brand familiar di kepala orang.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--orange);font-weight:700">Promo agresif</b> — bundling, flash sale, diskon volume — trigger pembelian pertama.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--orange);font-weight:700">Distribusi & availability</b> — gampang dibeli di mana-mana (Shopee, Tokopedia, mini market, GoFood).</li>
+          <li style="margin-bottom:10px"><b style="color:var(--orange);font-weight:700">Packaging recognizable</b> — warna & logo yang mencolok dari rak, biar gampang dipilih cepat.</li>
+          <li style="margin-bottom:10px"><b style="color:var(--orange);font-weight:700">Top-of-mind reminder</b> — jingle, tagline pendek, pengulangan konsisten supaya brand nyangkut di kepala.</li>
+        </ol>
+        <hr style="height:1px;background:var(--border);border:0;margin:20px 0">
+        <h3 style="font-size:12px;font-weight:700;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em">Kategori bisnis lain yang masuk tipe ini</h3>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Makanan & Minuman harian, FMCG, Buku & Alat Tulis, Voucher, Souvenir, Laundry, Salon, Barbershop, Catering harian</p>
+      </div>
+
+      <!-- Result variant: ABC / Experiential -->
+      <div class="hoe-result-card" data-result="abc" hidden>
+        <div style="border-radius:14px;padding:24px 22px;color:#fff;margin:0 0 20px;background:linear-gradient(135deg,#FF6B2B 0%,#F5A623 100%)">
+          <div style="display:inline-block;padding:5px 12px;background:rgba(0,0,0,0.25);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Experiential</div>
+          <div style="font-size:26px;font-weight:800;margin:0 0 8px;line-height:1.2;letter-spacing:-0.02em">Bisnis Lo Tipe Experiential (A → B → C)</div>
+          <div style="font-size:14px;opacity:0.95;font-weight:600">
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Affective</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Behavior</span> →
+            <span style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,0.22);border-radius:6px;margin:2px">Cognitive</span>
+          </div>
+        </div>
+        <p style="margin:0 0 14px;color:var(--text)">Customer lo beli karena emosi & vibes dulu. Liat foto IG-nya cakep, suka aesthetic-nya, langsung checkout — baru mikir "worth it nggak ya?" setelah barang nyampe. Marketing lo soal visual, mood, dan storytelling — bukan spec sheet.</p>
+        <h2 style="font-size:20px;font-weight:700;margin:14px 0 14px;letter-spacing:-0.01em">5 Action Marketing Buat Lo</h2>
+        <ol style="margin:0;padding-left:20px">
+          <li style="margin-bottom:10px"><b class="hoe-gradient-text" style="font-weight:700">Visual estetik wajib</b> — foto produk pro, video singkat sinematik. Investasi di photographer/videographer.</li>
+          <li style="margin-bottom:10px"><b class="hoe-gradient-text" style="font-weight:700">Feeds IG/TikTok rapi & konsisten</b> — color palette satu nada, layout grid yang enak diliat.</li>
+          <li style="margin-bottom:10px"><b class="hoe-gradient-text" style="font-weight:700">Mood & vibe storytelling</b> — bangun aspirasi, bukan jualan fitur. Customer beli identitas.</li>
+          <li style="margin-bottom:10px"><b class="hoe-gradient-text" style="font-weight:700">UGC + micro-influencer</b> — repost customer beneran, ajak influencer relevan yang vibes-nya match.</li>
+          <li style="margin-bottom:10px"><b class="hoe-gradient-text" style="font-weight:700">Unboxing experience</b> — kemasan, kartu ucapan, parfum dalam paket — bikin customer auto-share di IG story.</li>
+        </ol>
+        <hr style="height:1px;background:var(--border);border:0;margin:20px 0">
+        <h3 style="font-size:12px;font-weight:700;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em">Kategori bisnis lain yang masuk tipe ini</h3>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Fashion lokal, F&B specialty (cafe, dessert estetik), Sepatu, Tas, Photography, Videography, Graphic Design, Florist, Interior Designer, Hobi & Koleksi, Olahraga & Outdoor lifestyle</p>
+      </div>
+
+      <!-- Score breakdown -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;margin:0 0 14px">
+        <h3 style="font-size:12px;font-weight:700;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em">Skor lo</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <div id="hoe-score-cab-cell" style="padding:14px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;text-align:center">
+            <b id="hoe-score-cab" style="display:block;font-size:24px;font-weight:800;line-height:1;margin-bottom:6px;color:var(--text)">0</b>
+            <small style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">High Involvement</small>
+          </div>
+          <div id="hoe-score-cba-cell" style="padding:14px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;text-align:center">
+            <b id="hoe-score-cba" style="display:block;font-size:24px;font-weight:800;line-height:1;margin-bottom:6px;color:var(--text)">0</b>
+            <small style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Low Involvement</small>
+          </div>
+          <div id="hoe-score-abc-cell" style="padding:14px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;text-align:center">
+            <b id="hoe-score-abc" style="display:block;font-size:24px;font-weight:800;line-height:1;margin-bottom:6px;color:var(--text)">0</b>
+            <small style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Experiential</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result actions -->
+    <div class="hoe-no-print" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button id="hoe-btn-print" class="hoe-btn-secondary" style="background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 18px;border-radius:10px;font-size:14px;font-weight:700">🖨 Print / Save PDF</button>
+      </div>
+      <button id="hoe-btn-restart" class="hoe-btn-primary" style="background:var(--orange);color:#fff;padding:12px 20px;border-radius:10px;font-size:15px;font-weight:700">Ulang Quiz</button>
+    </div>
+
+    <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:18px;font-weight:500">
+      Hierarchy of Effect Classifier • Kategori berdasarkan Shopee Indonesia + Services
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'hoe_progress_v1';
+  var TOTAL_STEPS = 7;
+  var state = { step: 0, answers: {}, completed: false };
+
+  function $(id) { return document.getElementById(id); }
+  function qs(sel, root) { return (root || document).querySelector(sel); }
+  function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+  // ----- Storage -----
+  function loadState() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var p = JSON.parse(raw);
+      if (p && typeof p === 'object') {
+        if (typeof p.step === 'number') state.step = p.step;
+        if (p.answers && typeof p.answers === 'object') state.answers = p.answers;
+        state.completed = !!p.completed;
+      }
+    } catch (e) {}
+  }
+  function saveState() {
+    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function clearState() {
+    try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    state = { step: 0, answers: {}, completed: false };
+  }
+
+  // ----- Screen switching -----
+  function showScreen(name) {
+    qsa('.hoe-screen').forEach(function (s) {
+      s.hidden = (s.getAttribute('data-screen') !== name);
+    });
+  }
+
+  // ----- Intro -----
+  function renderIntro() {
+    showScreen('intro');
+    var hasProgress = state.step > 0 && state.step < TOTAL_STEPS && !state.completed;
+    $('hoe-btn-resume').hidden = !hasProgress;
+    $('hoe-btn-view-result').hidden = !state.completed;
+    $('hoe-btn-start').textContent = (hasProgress || state.completed) ? 'Mulai Quiz Baru' : 'Mulai Diagnosa';
+  }
+
+  // ----- Quiz -----
+  function renderQuizStep() {
+    showScreen('quiz');
+    qsa('.hoe-q').forEach(function (q) {
+      q.hidden = (parseInt(q.getAttribute('data-step'), 10) !== state.step);
+    });
+    var pct = (state.step / TOTAL_STEPS) * 100;
+    $('hoe-progress-bar').style.width = pct + '%';
+    $('hoe-progress-text').textContent = 'Pertanyaan ' + (state.step + 1) + '/' + TOTAL_STEPS;
+
+    // Restore selected answer
+    var qKey = 'q' + (state.step + 1);
+    var ansVal = state.answers[qKey];
+
+    if (state.step === 0) {
+      // select dropdown
+      var sel = $('hoe-q1');
+      sel.value = (ansVal != null) ? String(ansVal) : '';
+    } else {
+      // radio group
+      var group = qs('.hoe-radio-group[data-q="' + qKey + '"]');
+      qsa('.hoe-opt', group).forEach(function (l) { l.classList.remove('is-selected'); });
+      qsa('input[type="radio"]', group).forEach(function (r) {
+        if (ansVal != null && r.value === String(ansVal)) {
+          r.checked = true;
+          r.closest('.hoe-opt').classList.add('is-selected');
+        } else {
+          r.checked = false;
+        }
+      });
+    }
+
+    // Buttons
+    $('hoe-btn-back').disabled = (state.step === 0);
+    $('hoe-btn-next').disabled = (ansVal == null);
+    $('hoe-btn-next').textContent = (state.step + 1 >= TOTAL_STEPS) ? 'Lihat Hasil →' : 'Selanjutnya →';
+  }
+
+  function recordAnswer(qKey, value) {
+    state.answers[qKey] = value;
+    saveState();
+    $('hoe-btn-next').disabled = false;
+  }
+
+  // ----- Scoring -----
+  function getOptionWeights(qKey, value) {
+    if (value == null) return null;
+    if (qKey === 'q1') {
+      var opt = qs('#hoe-q1 option[value="' + value + '"]');
+      return opt ? readWeights(opt) : null;
+    } else {
+      var num = qKey.charAt(1);
+      var radio = qs('input[name="hoe-q' + num + '"][value="' + value + '"]');
+      return radio ? readWeights(radio) : null;
+    }
+  }
+  function readWeights(node) {
+    return {
+      CAB: parseInt(node.getAttribute('data-cab') || '0', 10),
+      CBA: parseInt(node.getAttribute('data-cba') || '0', 10),
+      ABC: parseInt(node.getAttribute('data-abc') || '0', 10)
+    };
+  }
+  function computeScore() {
+    var s = { CAB: 0, CBA: 0, ABC: 0 };
+    for (var i = 1; i <= TOTAL_STEPS; i++) {
+      var k = 'q' + i;
+      var w = getOptionWeights(k, state.answers[k]);
+      if (!w) continue;
+      s.CAB += w.CAB; s.CBA += w.CBA; s.ABC += w.ABC;
+    }
+    return s;
+  }
+  function pickWinner(s) {
+    // Tie-breaker: CAB > CBA > ABC
+    var order = ['CAB', 'CBA', 'ABC'];
+    var winner = 'CAB', best = -1;
+    for (var i = 0; i < order.length; i++) {
+      if (s[order[i]] > best) { best = s[order[i]]; winner = order[i]; }
+    }
+    return winner;
+  }
+
+  // ----- Result -----
+  function renderResult() {
+    showScreen('result');
+    var score = computeScore();
+    var winner = pickWinner(score);
+
+    qsa('.hoe-result-card').forEach(function (c) {
+      c.hidden = (c.getAttribute('data-result') !== winner.toLowerCase());
+    });
+
+    $('hoe-score-cab').textContent = String(score.CAB);
+    $('hoe-score-cba').textContent = String(score.CBA);
+    $('hoe-score-abc').textContent = String(score.ABC);
+
+    // Highlight winner cell
+    ['cab', 'cba', 'abc'].forEach(function (k) {
+      var cell = $('hoe-score-' + k + '-cell');
+      var isWin = (k === winner.toLowerCase());
+      cell.style.borderWidth = isWin ? '2px' : '1px';
+      cell.style.padding = isWin ? '13px 9px' : '14px 10px';
+      var color = (k === 'cab') ? '#F5A623' : (k === 'cba') ? '#FF6B2B' : '#F5A623';
+      cell.style.borderColor = isWin ? color : 'var(--border)';
+      var b = $('hoe-score-' + k);
+      if (isWin) {
+        if (k === 'abc') {
+          b.className = 'hoe-gradient-text';
+        } else {
+          b.style.color = color;
+        }
+      } else {
+        b.className = '';
+        b.style.color = 'var(--text)';
+      }
+    });
+  }
+
+  // ----- Actions -----
+  function startQuiz(fresh) {
+    if (fresh) clearState();
+    state.step = 0;
+    saveState();
+    renderQuizStep();
+  }
+  function goNext() {
+    var qKey = 'q' + (state.step + 1);
+    if (state.answers[qKey] == null) return;
+    if (state.step + 1 >= TOTAL_STEPS) {
+      state.completed = true;
+      saveState();
+      renderResult();
+    } else {
+      state.step++;
+      saveState();
+      renderQuizStep();
+    }
+  }
+  function goBack() {
+    if (state.step === 0) return;
+    state.step--;
+    saveState();
+    renderQuizStep();
+  }
+  function resetAnswers() {
+    if (!confirm('Yakin reset semua jawaban?')) return;
+    clearState();
+    renderIntro();
+  }
+
+  // ----- Wire up -----
+  function wire() {
+    // Intro buttons
+    $('hoe-btn-start').addEventListener('click', function () { startQuiz(true); });
+    $('hoe-btn-resume').addEventListener('click', function () { renderQuizStep(); });
+    $('hoe-btn-view-result').addEventListener('click', function () { renderResult(); });
+
+    // Q1 dropdown
+    $('hoe-q1').addEventListener('change', function (e) {
+      var v = e.target.value;
+      if (v === '') return;
+      recordAnswer('q1', v);
+    });
+
+    // Radio groups (q2-q7)
+    qsa('.hoe-radio-group').forEach(function (group) {
+      var qKey = group.getAttribute('data-q');
+      group.addEventListener('change', function (e) {
+        if (e.target.type !== 'radio') return;
+        recordAnswer(qKey, e.target.value);
+        qsa('.hoe-opt', group).forEach(function (l) { l.classList.remove('is-selected'); });
+        e.target.closest('.hoe-opt').classList.add('is-selected');
+      });
+    });
+
+    // Quiz nav
+    $('hoe-btn-next').addEventListener('click', goNext);
+    $('hoe-btn-back').addEventListener('click', goBack);
+    $('hoe-btn-reset').addEventListener('click', resetAnswers);
+
+    // Result actions
+    $('hoe-btn-print').addEventListener('click', function () { window.print(); });
+    $('hoe-btn-restart').addEventListener('click', function () {
+      if (confirm('Mulai quiz dari awal? Jawaban sebelumnya bakal ke-reset.')) {
+        clearState();
+        renderIntro();
+      }
+    });
+  }
+
+  // ----- Init -----
+  function init() {
+    loadState();
+    wire();
+    if (state.completed) renderIntro();
+    else if (state.step > 0) renderIntro();
+    else renderIntro();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
+
